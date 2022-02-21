@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the TYPO3 CMS extension "form_consent".
  *
@@ -19,21 +21,38 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/** @noinspection PhpUndefinedVariableInspection */
-$EM_CONF[$_EXTKEY] = [
-    'title' => 'Form consent',
-    'description' => 'An extension for TYPO3 CMS that adds double opt-in functionality to EXT:form. It allows the dynamic adaptation of the entire double opt-in process using various events. In addition, the extension integrates seamlessly into TYPO3, for example to delete outdated consents in compliance with the GDPR.',
-    'category' => 'fe',
-    'author' => 'Elias Häußler',
-    'author_email' => 'elias@haeussler.dev',
-    'state' => 'alpha',
-    'uploadfolder' => false,
-    'createDirs' => '',
-    'clearCacheOnLoad' => false,
-    'version' => '0.2.1',
-    'constraints' => [
-        'depends' => [
-            'typo3' => '11.5.0-11.5.99',
-        ],
-    ],
-];
+namespace EliasHaeussler\Typo3FormConsent\Registry\Dto;
+
+use EliasHaeussler\Typo3FormConsent\Domain\Model\Consent;
+
+/**
+ * ConsentState
+ *
+ * @author Elias Häußler <elias@haeussler.dev>
+ * @license GPL-2.0-or-later
+ * @internal
+ */
+final class ConsentState
+{
+    /**
+     * @var Consent
+     */
+    private $consent;
+
+    public function __construct(Consent $consent)
+    {
+        $this->consent = $consent;
+    }
+
+    public function isApproved(): bool
+    {
+        return $this->consent->isApproved();
+    }
+
+    public function isDismissed(): bool
+    {
+        return !$this->consent->isApproved()
+            && null === $this->consent->getData()
+            && null === $this->consent->getOriginalRequestParameters();
+    }
+}

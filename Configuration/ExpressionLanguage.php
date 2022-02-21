@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the TYPO3 CMS extension "form_consent".
  *
@@ -19,21 +21,10 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/** @noinspection PhpUndefinedVariableInspection */
-$EM_CONF[$_EXTKEY] = [
-    'title' => 'Form consent',
-    'description' => 'An extension for TYPO3 CMS that adds double opt-in functionality to EXT:form. It allows the dynamic adaptation of the entire double opt-in process using various events. In addition, the extension integrates seamlessly into TYPO3, for example to delete outdated consents in compliance with the GDPR.',
-    'category' => 'fe',
-    'author' => 'Elias Häußler',
-    'author_email' => 'elias@haeussler.dev',
-    'state' => 'alpha',
-    'uploadfolder' => false,
-    'createDirs' => '',
-    'clearCacheOnLoad' => false,
-    'version' => '0.2.1',
-    'constraints' => [
-        'depends' => [
-            'typo3' => '11.5.0-11.5.99',
-        ],
+use EliasHaeussler\Typo3FormConsent\ExpressionLanguage\ConsentConditionProvider;
+
+return [
+    'form' => [
+        ConsentConditionProvider::class,
     ],
 ];
