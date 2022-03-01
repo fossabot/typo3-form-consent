@@ -67,13 +67,13 @@ jobs:
       - name: Fix coverage path
         working-directory: .Build/log/coverage
         run: sed -i 's/\/home\/runner\/work\/typo3-form-consent\/typo3-form-consent\//\/github\/workspace\//g' clover.xml
-        if: ${{ matrix.coverage }}
+        if: ${{ matrix.coverage && github.event == 'pull_request' }}
       - name: Run SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        if: ${{ matrix.coverage }}
+        if: ${{ matrix.coverage && github.event == 'pull_request' }}
 
   tests-lowest:
     name: '[test-lowest] PHP ${{ matrix.php-version }} & TYPO3 ${{ matrix.typo3-version }}'
