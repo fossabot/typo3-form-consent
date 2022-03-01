@@ -7,7 +7,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=eliashaeussler_typo3-form-consent&metric=coverage)](https://sonarcloud.io/dashboard?id=eliashaeussler_typo3-form-consent)
 [![Tests](https://github.com/eliashaeussler/typo3-form-consent/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-form-consent/actions/workflows/tests.yaml)
 [![CGL](https://github.com/eliashaeussler/typo3-form-consent/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-form-consent/actions/workflows/cgl.yaml)
-[![Latest Stable Version](http://poser.pugx.org/eliashaeussler/typo3-form-consent/v)](https://packagist.org/packages/eliashaeussler/typo3-form-consent)
+[![Release](https://github.com/eliashaeussler/typo3-form-consent/actions/workflows/release.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-form-consent/actions/workflows/release.yaml)
 [![License](http://poser.pugx.org/eliashaeussler/typo3-form-consent/license)](LICENSE.md)\
 [![Version](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/form_consent/version/shields)](https://extensions.typo3.org/extension/form_consent)
 [![Downloads](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/form_consent/downloads/shields)](https://extensions.typo3.org/extension/form_consent)
