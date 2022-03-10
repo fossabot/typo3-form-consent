@@ -62,6 +62,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         if: ${{ matrix.coverage && github.event_name == 'pull_request' }}
+      - name: Report coverage
+        uses: codecov/codecov-action@v2
+        with:
+          directory: ./.Build/log/coverage
+          files: ./clover.xml
+          fail_ci_if_error: true
+          verbose: true
+        if: ${{ matrix.coverage && github.event_name == 'pull_request' }}
 
       # Save acceptance reports
       - uses: actions/upload-artifact@v3
